@@ -47,11 +47,8 @@ def main():
     # DNS Records A / MX / NS / TXT
     print("\n\tDNS Records 📝")
     print("="*70)
-    print(f"\nA \t: \t{dr.get_a_record(targ)}")
-    print(f"MX \t: \t{dr.get_mx_record(targ)}")
-    print(f"NS \t: \t{dr.get_ns_record(targ)}")
-    print(f"TXT \t: \t{dr.get_txt_record(targ)}")
-
+    for record_type in ['A', 'MX', 'NS', 'TXT']:
+        print(f"{record_type} \t:\t{dr.get_records(targ, record_type)}")
 
 
 

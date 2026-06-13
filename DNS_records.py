@@ -1,31 +1,11 @@
 from dns import resolver
 
-def get_a_record(domain):
+def get_records(domain, record_type):
     try:
-        answers = resolver.resolve(domain,'A')
+        answers = resolver.resolve(domain, record_type)
         return [answer.to_text() for answer in answers]
     except Exception as err:
-        return "Not Available⛔"
-def get_mx_record(domain):
-    try:
-        answers = resolver.resolve(domain, 'MX')
-        return [answer.to_text() for answer in answers]
-    except Exception as err:
-        return "Not Available⛔"
-
-def get_ns_record(domain):
-    try:
-        answers = resolver.resolve(domain, 'NS')
-        return [answer.to_text() for answer in answers]
-    except Exception as err:
-        return "Not Available⛔"
-def get_txt_record(domain):
-    try:
-        answers = resolver.resolve(domain, "TXT")
-        return [answer.to_text() for answer in answers]
-    except Exception as err:
-        return "Not Available⛔"
-    
+        return f"{record_type}Record Not Available⛔"
 
 # Test 
 # domain = "google.com"

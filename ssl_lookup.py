@@ -12,7 +12,7 @@ def get_ssl_info(domain):
                 sock
                 , server_hostname = domain
             ) as ssl_sock:
-                cert = ssl_sock.getpeercert()
+                cert = ssl_sock.getpeercert(timeout=10)
                 return extract_data(cert)
     except Exception as err:
         print(f"fail to get SSL Certification : {err}")

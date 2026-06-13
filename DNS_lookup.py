@@ -14,4 +14,4 @@ def get_domain(ip):
         hostname = socket.gethostbyaddr(ip)
         return hostname[0]
     except Exception:
-        return "No PTR record found"
+        return None

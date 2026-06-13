@@ -34,9 +34,9 @@ def main():
         print("Whois data not found")
 
     # SSL Certification 
-    ssl_data = ssl.get_ssl_info(targ)
     print("\n\tSSL Information 🔐")
     print("="*70)
+    ssl_data = ssl.get_ssl_info(targ)
     if ssl_data:
         for key, value in ssl_data.items():
             print(f"{key:<15}:\t{value}")

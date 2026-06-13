@@ -19,21 +19,23 @@ def get_ssl_info(domain):
         return None
 
 def extract_data(cert):
-
-    data = {
-
-        'Country': cert['issuer'][0][0][1],        
-        'Orgnazation': cert['issuer'][1][0][1],
-        'Common Name': cert['issuer'][2][0][1],
-        'Version': cert['version'],
-        'Serial Number': cert['serialNumber'],
-        'Start from': cert['notBefore'],
-        'End on': cert['notAfter'],
-        'Days Left': '',
-        'Expired': '',
-        'Subject A-ltname': ''.join([f"\n\t{item[0]} : {item[1]}" for item in cert['subjectAltName']])
-    }
-
+    issuer = cert.get('issuer', 'N/A')
+    try:
+        data = {
+            'Country': issuer[0][0][1] or 'N/A',
+            'Orgnazation': issuer[1][0][1] or 'N/A',
+            'Common Name': issuer[2][0][1] or 'N/A',
+            'Version': cert['version'] or 'N/A',
+            'Serial Number': cert['serialNumber'] or 'N/A',
+            'Start from': cert['notBefore'] or 'N/A',
+            'End on': cert['notAfter'] or 'N/A',
+            'Days Left': '',
+            'Expired': '',
+            'Subject A-ltname': ''.join([f"\n\t{item[0]} : {item[1]}" for item in cert['subjectAltName']])
+        }
+    except:
+        data ='N/A'
+        return data
     days_remaining = datetime.strptime(
         cert['notAfter'],
          "%b %d %H:%M:%S %Y %Z"

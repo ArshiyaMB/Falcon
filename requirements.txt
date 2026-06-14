@@ -1,0 +1,3 @@
+Falcon uses following library:
+dnspython
+whois-python

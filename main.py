@@ -50,10 +50,12 @@ def main():
     # DNS Records A / MX / NS / TXT
     print("\n\tDNS Records 📝")
     print("="*70)
+    txt_record = None
     for record_type in ['A', 'MX', 'NS', 'TXT']:
-        print(f"{record_type} \t:\t{dr.get_records(targ, record_type)}")
+        record = dr.get_records(targ, record_type)
+        print(f"{record_type} \t:\t{record}")
         if record_type == 'TXT':
-            txt_record = dr.get_records(targ, record_type)
+            txt_record = record
     if txt_record is not None:
         spf = 0
         dmarc = 0

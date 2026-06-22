@@ -9,6 +9,7 @@ Falcon is a Python OSINT and reconnaissance tool that gathers public information
 - WHOIS Information
 - DNS Records (A, MX, NS, TXT)
 - SSL Certificate Analysis
+- Email security detection
 
 ## Usage
 
